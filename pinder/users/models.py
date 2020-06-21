@@ -20,7 +20,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     name = models.CharField(max_length=128)
     email = models.EmailField(unique=True)
-    isp = models.ForeignKey(Isp)
+    isp = models.ForeignKey(Isp, on_delete=models.CASCADE)
 
     is_staff = models.BooleanField(
         "Staff status",

@@ -20,12 +20,12 @@ class Request(models.Model):
     )
 
     sender = models.ForeignKey(
-        settings.AUTH_USER_MODEL, related_name="requests_received")
-    receiver = models.ForeignKey("users.Isp", related_name="requests_sent")
+        settings.AUTH_USER_MODEL, related_name="requests_received", on_delete=models.CASCADE)
+    receiver = models.ForeignKey("users.Isp", related_name="requests_sent", on_delete=models.CASCADE)
     ixlan_id = models.PositiveIntegerField()
 
     state = models.CharField(
-        choices=STATES, default=STATE_WAITING, max_length=8)
+        choices=STATES, default=STATE_WAITING, max_length=12)
 
     sender_is_ready = models.BooleanField(default=False)
     receiver_is_ready = models.BooleanField(default=False)

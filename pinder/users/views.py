@@ -1,5 +1,5 @@
 from django.contrib.auth import login
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.views.generic import RedirectView
 
 from rest_framework.permissions import AllowAny

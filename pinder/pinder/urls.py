@@ -13,13 +13,14 @@ from .views import IndexView
 router = DefaultRouter()
 router.register(r'requests', RequestViewSet)
 
+app_name = 'pinder'
 urlpatterns = [
 
     url(
         r"^api/auth/",
         include('rest_framework.urls', namespace="rest_framework")
     ),
-    url(r"^api/", include(router.urls, namespace="drf")),
+    url(r"^api/", include((router.urls, 'rest_framework'), namespace="drf")),
     url(r"^$", IndexView.as_view(), name="index"),
 
     url(r"^requests/$", RequestListView.as_view(), name="request-list"),
